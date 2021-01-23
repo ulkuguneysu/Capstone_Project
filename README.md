@@ -1,9 +1,12 @@
  # SMART THERMOSTAT INDOOR TEMPERATURE PREDICTION
- <img src="Images/px_2018_buyvalue.png">
+ 
+ <img src="Images/ny_skline.png">
 
  # Introduction
 
 Smart Thermostat is a company that guarantees 15% annual savings and tenant comfort with our unique boiler monitoring and management system from the ground up that controls and monitors boilers and heating systems end-to-end. We built the most advanced physical controls (heat computers and sensors) on the market, and paired them with machine learning software that communicates and automatically manages the controls. 
+
+ <img src="Images/boiler.png">
 
 We designed our heat control and sensor network from the ground up to use apartment temperature and boiler performance data thousands of times a second to control the boiler more effectively. The result is lower fuel usage, better quality of heat for tenants, and lower boiler service costs.
 
@@ -232,14 +235,63 @@ We apply Decision Trees, Random Forest, Extra Trees, and Gradient Boosting Regre
  
  ### 4. Predicting 5 minute out with 10 minute predictors with differencing periods=1
  
-  <img src="Images/predicting_10min.png">
+  <img src="Images/predicting_5mon10preds.png">
+
+*   We create a new dataset using differencing with period 1 and used 10 minutes of data for each row.
+
+*   This model is designed to predict temperature difference 5 minutes into the future.
+
+*   We apply Random Forest Regressor with MinMaxScaler.
+
+*   The MSE is 2.79, Train Score is 0.93 and Test Score is 0.49.
+
+*   Indoor temperature - 0 minutes ago is significantly effective on the model.
+
+*   5 minute time frame has better results as predictors.
  
  
+ ## CONCLUSION
  
- 
-## CONCLUSION
+  <img src="Images/conclusion1.png">
+
+*   We have been predicting indoor temperature in the next 5th minute. We created fairly accurate models. For model tuning, first we stripped our data where there is no indoor temperature change within the next 5 minutes. 
+
+*   We applied 4 of more prominent regression models including Decision Trees, Random Forest, Extra Trees and Gradient Boosting. Later, we tuned the most promising 2 base models with different parameters. Some base models are more open to improvement. As we observed our Extra Trees Regression Model have better base results compared to Random Forest Regression. We apply different methods for tuning and receive better results with Random Forest Regression.
 
 
+*   With Random Regressor, we received better results when using MinMaxScaler instead of StandardScaler as our standardization method. All our Random Forest Regressions are standardized with MinMaxScaler. 
+
+*   In all the models, we observe *indoor_temp* columns are the most significant columns, mostly the first and/or the last indoor temperature values. *outdoor_temp* columns are also has a good feature importance at some models. It seems *boiler_on* is the least significant predictor. In practice, it is safe to say it plays a major role on the next indoor temperature value.
+
+*   Below, you see Train-Test Scores and MSE Values for differently tuned models. Our base model is predicting the difference with the next 5th minute using indoor_temp, outdoor_temp and boiler_on columns and their previous 4 minutes' data. (Each row has 5 minutes' data) Our MSE is 0.135. Our goal is to improve this model, and get smaller MSE.
+
+<img src="Images/model_df.png">
+
+*   **Tuning with Differencing with Periods=5** : We apply differencing to indoor and outdoor temperature columns with periods=5. Our MSE is improved 0.005.
+
+*   **Tuning with Differencing with Periods=1** : We apply differencing to indoor and outdoor temperature columns with periods=1. Our MSE is 0.12. We observe that we receive better results with differencing 1 and will use this in the next models.
+
+
+*   **Tuning with Differencing with Periods=1 to Predict 1 Minute Out** : In this model, we change our target to predict the indoor temperature difference with the next minute's temperature. We get a MSE of 0.085 which is highly improved compared to the base.
+
+*   **Tuning with Differencing with Periods=1 to Predict 10 Minute Out** : In this model, we change our target to predict the indoor temperature difference with the next 10th minute's temperature. We get a MSE of 0.09. This is an interesting finding. Because the model proved it is better predicting the next model. One would think predicting the next 5th minute will provide better results than predicting the next 10th minute. 
+
+*   **Tuning with Differencing with Periods=1 to Predict 5 Minute Out with 10 Minute Worth of Predictors** : For this model we change the number of predictors. Instead of using 5 minutes worth of data(15 predictors), we use 10 minutes data(30 predictors). This is another interesting result that this model has the worst Mean Squared Error Value. When initiating this model, my Null Hypothesis was reading the last 5 minutes data to predict the next 5th minute's difference will provide better results thatn reading the last 10 minutes data. With this model we prove that we fail to reject the Null Hypothesis.
+
+*   Of all the tuned models, we get the best results with differencing the data with periods=1 using 5 minutes' data as predictors. Both predicting 1 minute and 10 minute out provide prominent results.
+
+
+ ## SUGGESTION
+
+<img src="Images/suggestion.png">
+ 
+*   We have very limited predictors. We can start feature engineering in order to create better predictors. One feature can be creating a columns where we store how many consecutive minutes the boiler has been on or off. This may improve the level of feature importance of *boiler_on* column. 
+
+*   Another options is checking for non-linearities in the relationship between outdoor temperature and the change in indoor temperature.
+
+*   We observed that temperature does not change from minute to minute very often. So when we are using the previous minutes data, most of the time we have the same values. We can change the frequency of our time series such as 5 minutes(5T). In practice, this will increase the variety in predictor values. 
+
+*   Use TensorFlow to do modeling using Time Series.
 
 
 
