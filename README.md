@@ -1,16 +1,47 @@
- # SMART THERMOSTAT INDOOR TEMPERATURE PREDICTION
+ # ENERGY EFFICIENCY MODELS FOR SMART BOILER
+
  
  <img src="Images/ny_skline.png">
 
  # Introduction
 
-Smart Thermostat is a company that guarantees 15% annual savings and tenant comfort with our unique boiler monitoring and management system from the ground up that controls and monitors boilers and heating systems end-to-end. We built the most advanced physical controls (heat computers and sensors) on the market, and paired them with machine learning software that communicates and automatically manages the controls. 
+Smart Boiler is a company that guarantees 15% annual savings and tenant comfort with our unique boiler monitoring and management system from the ground up that controls and monitors boilers and heating systems end-to-end. We built the most advanced physical controls (heat computers and sensors) on the market, and paired them with machine learning software that communicates and automatically manages the controls. 
 
  <img src="Images/boiler.png">
 
 We designed our heat control and sensor network from the ground up to use apartment temperature and boiler performance data thousands of times a second to control the boiler more effectively. The result is lower fuel usage, better quality of heat for tenants, and lower boiler service costs.
 
-Machine learning software that automatically calibrates the control, by learning from each building individually. We are the first heating management service to use machine learning to automatically calibrate and adjust the settings for each building, based on that building's past performance, and the upcoming weather forecast that day. The result is an additional 5% reduction in heating costs, and an improvement in tenant comfort.
+Our machine learning software automatically calibrates the control, by learning from each building individually. We are the first heating management service to use machine learning to automatically calibrate and adjust the settings for each building, based on that building's past performance, and the upcoming weather forecast that day. The result is an additional 5% reduction in heating costs, and an improvement in tenant comfort.
+
+## Abstract
+
+Energy efficienty is a very important subject since we have limited energy sources. Smart boilers provide more control over the central heating while reducing energy waste and energy bills as a bonus. Above we mentioned that our company's software learns, calibrates, and adjust the boiler settings for each building and guarentees 15% annual savings. 
+
+ <img src="Images/energy_efficieny.png">
+
+In this project, I will analyze how indoor temperature is changing over the time using indoor temperature, outdoor temperature, and binary boiler on/off information. The purpose of this project is to create a regression model to predict the future indoor temperature to see if we are able to provide more energy efficieny and improve the Smart Thermostat Machine Learning Software in this aspect.
+
+This project is consistent of 5 Jupyter Notebooks. 
+
+***Notebook 1*** - **Data Cleaning** 
+A notebook where I check for duplicates, missing data and place holders, apply data transformation where needed, feature engineer for exploratory data analysis.
+
+***Notebook 2*** - **Exploratory Data Analysis** 
+In this notebook, I explore data via visualizations and statistical analysis. For more interactive graphics, I used plotly express with range slider to observe different time frames easily. I also create a dataset with only 1 building's readings. This is our pilot building for modeling.
+
+***Notebook 3*** - **Regression Models** 
+This is the notebook where I compare different Regression Models that I applied to univariate and multivariate predictors to predict future indoor temperature. My criteria for the best model is Mean Squared Error value. I also observed Train Score and Test Scores and plot feature importances.
+
+***Notebook 4*** - **Model Application** 
+In this model, I test how widely my model is applicable using different building's datasets and observe the results.
+
+***Notebook 5*** - **Model Tuning** 
+This is bonus notebook where I have a different approach to data. In this notebook, my target is the indoor temperature difference in the future where I elimininate the data if there is none. (In the previous notebooks, my target was indoor temperature value in the future.) I tune the model by changing different parameters.
+
+***RECOMMENDATIONS***
+In my final model, I created a Random Forest Regression where I predict indoor temperature difference in the next 10 minute with 0.09 MSE. This suggests that as a company, our model is open for improvement and we can increase energy efficiency even more.
+
+I provided technical suggestions to improve this model at the end of this README.
 
 
  # Objectives
