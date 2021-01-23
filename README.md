@@ -12,6 +12,7 @@ We designed our heat control and sensor network from the ground up to use apartm
 
 Machine learning software that automatically calibrates the control, by learning from each building individually. We are the first heating management service to use machine learning to automatically calibrate and adjust the settings for each building, based on that building's past performance, and the upcoming weather forecast that day. The result is an additional 5% reduction in heating costs, and an improvement in tenant comfort.
 
+
  # Objectives
 
 * Explore data via visualizations and statistical analysis
@@ -21,14 +22,9 @@ Machine learning software that automatically calibrates the control, by learning
 * Apply regression models and select the best fitting
 * Apply model to the new data
 * Model tuning
+* Conclusion
+* Suggestion
 
-
-
-* Check data for trends & seasonality and decomposition
-* Create a model with selected p,d,q parameters for base model
-* Property price predictions for a single zipcode
-* Property price predictions for the determined dataset
-* Making recommendations based on investment period
 
  ## Explore data via visualizations and statistical analysis 
  
@@ -252,7 +248,7 @@ We apply Decision Trees, Random Forest, Extra Trees, and Gradient Boosting Regre
  
  ## CONCLUSION
  
-  <img src="Images/conclusion1.png">
+  <img src="Images/conclusion.png">
 
 *   We have been predicting indoor temperature in the next 5th minute. We created fairly accurate models. For model tuning, first we stripped our data where there is no indoor temperature change within the next 5 minutes. 
 
