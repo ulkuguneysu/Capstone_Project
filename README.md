@@ -142,7 +142,7 @@ Within the data, following columns are provided.
  
  #### Indoor temperature comparison of 2 different days
  
-  <img src="Images/indoor_comparison.png">
+  <img src="Images/line_plot.png">
   
 ***Observations:***
 
@@ -317,10 +317,3 @@ We apply Decision Trees, Random Forest, Extra Trees, and Gradient Boosting Regre
 *   Another options is checking for non-linearities in the relationship between outdoor temperature and the change in indoor temperature.
 
 *   We observed that temperature does not change from minute to minute very often. So when we are using the previous minutes data, most of the time we have the same values. We can change the frequency of our time series such as 5 minutes(5T). In practice, this will increase the variety in predictor values. 
-
-*   Use TensorFlow to do modeling using Time Series.
-
-
-
-
-
