@@ -1,7 +1,7 @@
  # IMPROVING ENERGY EFFICIENCY FOR SMART BOILER COMPANY
 
  
- <img src="Images/ny_skline.png">
+ <img src="Images/money_city.png">
 
  # Introduction
 
