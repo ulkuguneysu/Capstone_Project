@@ -230,35 +230,45 @@ We apply Decision Trees, Random Forest, Extra Trees, and Gradient Boosting Regre
 
   <img src="Images/predicting_5min5diff.png">
  
-* We created a dataset using differencing with period 1 and period 5 to indoor and outdoor temperature columns.
-* We applied Random Forest Regression with MinMaxScaler.
-* The MSE for period=1 differencing is 0.12005. (Train Score = 0.93, Test Score = 0.529)
-* The MSE for period=5 differencing is 0.12897 with higher Train and Test Score. (Train Score = 0.945, Test Score = 0.622)
-* The model heavily relies on 4 minutes ago indoor temperature.
+
+*   We created a dataset using differencing with period 1 and period 5.
+
+*   We applied Random Forest Regression with MinMaxScaler.
+
+*   The MSE for period=1 differencing is 0.12005. (Train Score = 0.93, Test Score = 0.529)
+
+*   The MSE for period=5 differencing is 0.12897 with higher Train and Test Score. (Train Score = 0.945, Test Score = 0.622)
+
+*   The model heavily relies on 4 minutes ago indoor temperature.
 
  ### 2. Predicting 1 minute out with differencing periods=1
 
   <img src="Images/predicting_1min.png">
  
-* We create a new dataset using differencing with period 1.
-* We apply Random Forest Regressor with MinMaxScaler.
-* The MSE of this model is 0.085.
-* It is safe to say our model is doing a good job when predicting the difference between the next minute compared to predicting 5 minutes into the future.
- 
+*   We create a new dataset using differencing with period 1.
+
+*   We apply Random Forest Regressor with MinMaxScaler.
+
+*   The MSE of this model is 0.085.
+
+*   It is safe to say our model is doing a good job when predicting the difference between the next minute compared to predicting 5 minutes into the future.
+
  ### 3. Predicting 10 minute out with differencing periods=1
  
   <img src="Images/predicting_10min.png">
  
-* We create a new dataset using differencing with period 1.
-* This model is designed to predict temperature difference 10 minutes into the future.
 
-* We apply Random Forest Regressor with MinMaxScaler.
+*   We create a new dataset using differencing with period 1.
 
-* The MSE is 0.09, Train Score is 0.99 and Test Scoreis 0.92. are the same as Ramdom Forest modeling with differencing 1 and 5 minutes into the future.
+*   This model is designed to predict temperature difference 10 minutes into the future.
 
-* The MSE for predicting 5 minutes into the future is 0.12.
+*   We apply Random Forest Regressor with MinMaxScaler.
 
-* We observe that predicting the next 10 minute provides better MSE.
+*   The MSE is 0.09, Train Score is 0.99 and Test Score is 0.92.  
+
+*   The MSE for predicting 5 minutes into the future is  0.12.
+
+*   We observe that predicting the next 10 minute provides better MSE.
  
  ### 4. Predicting 5 minute out with 10 minute predictors with differencing periods=1
  
